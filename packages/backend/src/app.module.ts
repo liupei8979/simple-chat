@@ -1,21 +1,31 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ChatGateway } from './chat/chat.gateway';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { FirestoreModule } from './firestore/firestore.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // TypeOrmModule.forRoot({
-    //   // Typeorm configuration
-    // }),
-
+    FirestoreModule.forRoot({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        keyFilename: configService.get<string>('FIRESTORE_KEY_FILENAME'),
+      }),
+      inject: [ConfigService],
+    }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [ChatGateway, AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
