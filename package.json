@@ -1,0 +1,10 @@
+{
+    "name": "mono-repo",
+    "version": "1.0.0",
+    "scripts": {
+      "start:backend": "cd packages/backend && pnpm start",
+      "start:frontend": "cd packages/frontend && pnpm dev",
+      "dev": "pnpm -r dev"
+    },
+    "license": "ISC"
+  }
