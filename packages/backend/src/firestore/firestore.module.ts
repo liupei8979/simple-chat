@@ -38,4 +38,18 @@ export class FirestoreModule {
             exports: [dbProvider, ...collectionProviders],
         };
     }
+
+    static forFeature(collections: string[]): DynamicModule {
+        const collectionProviders = collections.map(collectionName => ({
+            provide: `${collectionName}Collection`,
+            useFactory: (db: Firestore) => db.collection(collectionName),
+            inject: [FirestoreDatabaseProvider],
+        }));
+
+        return {
+            module: FirestoreModule,
+            providers: [...collectionProviders],
+            exports: [...collectionProviders],
+        };
+    }
 }

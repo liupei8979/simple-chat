@@ -1,5 +1,5 @@
 import { CollectionReference } from "@google-cloud/firestore";
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
@@ -8,6 +8,7 @@ import { UserDocument } from "src/documents/document.user";
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
+        @Inject(UserDocument.collectionName)
         private userCollection: CollectionReference<UserDocument>,
         private configService: ConfigService,
     ) {

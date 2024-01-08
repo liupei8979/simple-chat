@@ -1,30 +1,35 @@
-import { ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { AuthGuard } from "@nestjs/passport";
-import { Observable } from "rxjs";
+import { Request } from "express";
 
 @Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {
-    async canActivate(context: ExecutionContext): Promise<boolean> {
-        constructor(
-            private jwtService: JwtService,
-            private relfector: Reflector,
-        ) {}
-        // public 관련 로직?
+export class JwtAuthGuard implements CanActivate {
+    constructor(private jwtService: JwtService) {}
 
+    async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
-        if (!token) {
+        if(!token) {
             throw new UnauthorizedException();
         }
+
         try {
-            const payload = await this.jwtService
-        }
-    }
-
-    handleRequest(err: any, user: any, info: any, context: ExecutionContext, status?: any): TUser {
+            const payload = await this.jwtService.verifyAsync(
+                token,
+                {
+                    secret: process.env.JWT_SECRET
+                });
         
+                // route handler에서 이제 받을 수 있음.
+                request['user'] = payload;
+        } catch {
+            throw new UnauthorizedException();
+        }
+        return true;
     }
 
+    private extractTokenFromHeader(request: Request): string | undefined {
+        const [type, token] = request.headers.authorization?.split(' ') ?? [];
+        return type === 'Bearer' ? token : undefined;
+    }
 }

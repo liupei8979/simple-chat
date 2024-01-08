@@ -9,10 +9,14 @@ export class UsersService {
 
     constructor(
         @Inject(UserDocument.collectionName)
-    private usersCollection: CollectionReference<UserDocument>,
+        private usersCollection: CollectionReference<UserDocument>,
     ) {}
 
     async createUser(userDocument: TestUserDto): Promise<UserDocument> {
+        // 이전에 이미 email 중복 있으면 없애기.
+        // 추가 해야함!
+
+
         const { name, email, password } = userDocument;
         const docRef = this.usersCollection.doc(name);
         await docRef.set({
@@ -20,6 +24,7 @@ export class UsersService {
             email,
             password,
         });
+        // 결과를 알려주는 것으로 return값을 바꾸는 게 좋을 듯.
         const userDoc = await docRef.get();
         const user = userDoc.data();
         return user;
