@@ -1,4 +1,10 @@
-<script></script>
+<script lang="ts">
+    const friendRow = Array(10).fill({
+        name: '예시 이름',
+        status: '예시 메시지',
+        imgSrc: '/base_profile.jpg',
+    })
+</script>
 
 <div class="MainContent">
     <div class="MyProfileBlock">
@@ -12,7 +18,15 @@
         <p>친구 41</p>
     </div>
 
-    <h1 style="margin-left:40px">친구 목록 나열</h1>
+    {#each friendRow as friend}
+        <li>
+            <img src={friend.imgSrc} alt="profile Image" />
+            <p>
+                <b>{friend.name}</b>
+            </p>
+            <p>{friend.status}</p>
+        </li>
+    {/each}
 </div>
 
 <style>
@@ -24,11 +38,12 @@
         overflow: auto;
         & li {
             position: relative;
-            padding: 20px 100px 20px 180px;
+            list-style-type: none;
+            padding: 8px 100px 20px 105px;
             & img {
                 position: absolute;
                 top: 18px;
-                left: 120px;
+                left: 45px;
                 width: 45px;
                 height: 45px;
                 border-radius: 15px;
