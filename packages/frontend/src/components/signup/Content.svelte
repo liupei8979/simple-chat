@@ -1,41 +1,13 @@
 <script></script>
 
 <div class="Wrapper">
-    <label>
-        <h3>이메일</h3>
-        <span>
-            <input type="text" maxLength="30" />
-        </span>
-        <p></p>
-        <!-- 아이디 관련 경고 메시지가 표시될 곳 -->
-    </label>
+    <input type="text" placeholder="이메일" maxLength="30" />
 
-    <label>
-        <h3>비밀번호</h3>
-        <span>
-            <input type="password" maxLength="30" />
-        </span>
-        <p></p>
-        <!-- 비밀번호 관련 경고 메시지가 표시될 곳 -->
-    </label>
+    <input type="password" placeholder="비밀번호" maxLength="30" />
 
-    <label>
-        <h3>비밀번호 재확인</h3>
-        <span>
-            <input type="password" maxLength="30" />
-        </span>
-        <p></p>
-        <!-- 비밀번호 재확인 관련 경고 메시지가 표시될 곳 -->
-    </label>
+    <input type="password" placeholder="비밀번호 재확인" maxLength="30" />
 
-    <label>
-        <h3>이름</h3>
-        <span>
-            <input type="text" maxLength="30" />
-        </span>
-        <p></p>
-        <!-- 이름 관련 경고 메시지가 표시될 곳 -->
-    </label>
+    <input type="text" placeholder="이름" maxLength="30" />
 
     <button>가입하기</button>
 </div>
@@ -43,44 +15,79 @@
 <style>
     .Wrapper {
         width: 100%;
-        & label,
-        button {
+        height: 330px;
+        padding-top: 30px;
+        & input {
             display: block;
-            width: 80%;
             margin: 0 auto;
-        }
-        & label span,
-        button {
-            padding: 16px 5px;
-            border: 1px solid #dadada;
-        }
-        & label {
-            margin-bottom: 20px;
-        }
-        & label span {
-            display: block;
-            background-color: #fff;
-            & input {
-                border: none;
-                width: 100%;
-                outline: 0;
-                padding: 0 15px;
+            padding: 10px 5px;
+            width: 230px;
+            border: 1px solid #dcdcdc;
+            margin-top: 5px;
+            &:first-child {
+                border-bottom: none;
+            }
+            &::placeholder {
+                color: #a2a2a2;
             }
         }
-        & label h3 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
         & button {
-            background-color: #ffeb33;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
+            position: relative;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            padding: 10px 5px;
+            width: 230px;
+            border: 1px solid #000;
+            color: #fff;
+            background-color: #423630;
+            outline: none;
+            @keyframes iconLotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+                50% {
+                    transform: rotate(180deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            & i {
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                color: #5c5c5c;
+                animation: iconLotate 1.5s linear infinite;
+            }
+            &:hover {
+                background-color: #594941;
+                cursor: pointer;
+            }
+            &:active {
+                background-color: #423630;
+            }
+            &.disabled {
+                color: #969696;
+                background: #e2e2e2;
+                pointer-events: none;
+                border: 1px solid #dcdcdc;
+            }
         }
         & p {
+            padding-top: 20px;
+            text-align: center;
             color: red;
+        }
+        & ul {
+            list-style-type: none;
+            text-align: center;
+            margin-top: 70px;
+            margin-right: 40px;
+            & a {
+                text-decoration: none;
+                color: #5a5a5a;
+            }
         }
     }
 </style>

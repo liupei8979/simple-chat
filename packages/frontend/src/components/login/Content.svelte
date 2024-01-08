@@ -1,10 +1,20 @@
-<script></script>
+<script lang="ts">
+    function handleSubmit(event: SubmitEvent) {
+        // 기본 폼 제출 동작 방지
+        event.preventDefault()
+
+        // 로직 추가 (예: API 호출)
+
+        // 로그인 성공 시 /main/friends로 이동
+        window.location.href = '/main/friends'
+    }
+</script>
 
 <div class="Wrapper">
-    <form>
+    <form on:submit={handleSubmit}>
         <input type="text" placeholder="계정" maxLength="30" />
         <input type="password" autoComplete="new-password" placeholder="비밀번호" maxLength="30" />
-        <button>
+        <button type="submit">
             <span>로그인</span>
         </button>
 

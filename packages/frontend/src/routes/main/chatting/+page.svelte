@@ -6,6 +6,7 @@
 
 <div class="Main">
     <Header />
+    <Content />
 </div>
 
 <style>

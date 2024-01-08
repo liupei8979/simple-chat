@@ -17,7 +17,6 @@
     <div class="FriendsBorder">
         <p>친구 41</p>
     </div>
-
     {#each friendRow as friend}
         <li>
             <img src={friend.imgSrc} alt="profile Image" />
