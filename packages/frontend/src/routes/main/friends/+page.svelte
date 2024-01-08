@@ -1,15 +1,15 @@
 <script>
-import Header from "../../../components/friends/Header.svelte";
-import Content from "../../../components/friends/Content.svelte";
+    import Header from '../../../components/friends/Header.svelte'
+    import Content from '../../../components/friends/Content.svelte'
 </script>
 
 <div class="Main">
-<Header />
-<Content />
+    <Header />
+    <Content />
 </div>
 
 <style>
-    .Main{
+    .Main {
         padding-left: 100px;
         width: 100%;
         min-height: 100vh;

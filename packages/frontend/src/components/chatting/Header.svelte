@@ -2,17 +2,18 @@
 
 <div class="MainHeader">
     <div class="TitleBlock">
-        <h2>친구</h2>
-        <i class="fas fa-user-plus" title="친구 추가" />
+        <h2>채팅</h2>
+        <i class="fas fa-comment-medical" title="새로운 채팅" />
     </div>
+    <input placeholder="채팅방 이름, 참여자 검색" />
 </div>
 
 <style>
     .MainHeader {
         position: fixed;
         top: 0;
-        left: 0;
-        padding: 20px 20px 0px 120px;
+        left: 30px;
+        padding: 0px 20px 0px 120px;
         width: 100%;
         height: 100px;
         background-color: #fff;
@@ -22,7 +23,7 @@
             outline: none;
             border-radius: 10px;
             background-color: #f6f6f7;
-            width: 100%;
+            width: 92%;
             padding: 5px 10px;
             &:focus {
                 &::placeholder {
@@ -34,7 +35,7 @@
     .TitleBlock {
         position: relative;
         & h2 {
-            font-size: 20px;
+            font-size: 30px;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -43,7 +44,7 @@
             font-size: 20px;
             position: absolute;
             top: 5px;
-            right: 0;
+            right: 180px;
         }
     }
 </style>

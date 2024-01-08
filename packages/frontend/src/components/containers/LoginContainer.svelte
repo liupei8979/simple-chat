@@ -1,20 +1,17 @@
 <script>
-    import Header from "../login/Header.svelte";
-    import Content from "../login/Content.svelte";
-    import Footer from "../login/Footer.svelte";
+    import Header from '../login/Header.svelte'
+    import Content from '../login/Content.svelte'
 </script>
 
-
-<div class= "Wrapper">
+<div class="Wrapper">
     <Header />
     <Content />
-    <Footer />
-    </div>
-    
-    <style>
-        .Wrapper{
+</div>
+
+<style>
+    .Wrapper {
         width: 360px;
-         height: 600px;
+        height: 600px;
         background-color: #ffeb33;
-        }
-    </style>
+    }
+</style>

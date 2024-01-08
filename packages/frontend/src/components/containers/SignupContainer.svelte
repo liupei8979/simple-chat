@@ -1,6 +1,6 @@
 <script>
-    import Header from "../signup/Header.svelte";
-    import Content from "../signup/Content.svelte";
+    import Header from '../signup/Header.svelte'
+    import Content from '../signup/Content.svelte'
 </script>
 
 <div class="Wrapper">
@@ -8,15 +8,14 @@
     <Content />
 </div>
 
-
 <style>
-    .Wrapper{
+    .Wrapper {
         margin: 0 auto;
-  width: 50%;
-  min-height: 95vh;
-  border: 1px solid #dadada;
-  @media only screen and (max-width: 800px) {
-    width: 95%;
-  }
+        width: 50%;
+        min-height: 95vh;
+        border: 1px solid #dadada;
+        @media only screen and (max-width: 800px) {
+            width: 95%;
+        }
     }
 </style>
